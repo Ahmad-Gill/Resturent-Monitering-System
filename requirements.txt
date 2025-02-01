@@ -9,3 +9,4 @@ json5
 random2
 subprocess32
 livereload
+markupsafe
