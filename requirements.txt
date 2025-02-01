@@ -9,17 +9,3 @@ json5
 random2
 subprocess32
 livereload
-base64
-ast
-django.contrib.auth
-django.contrib.messages
-django.urls
-uuid
-json
-random
-re
-os
-shutil
-subprocess
-django.core.mail
-django.db.models
