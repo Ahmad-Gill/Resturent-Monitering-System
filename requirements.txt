@@ -4,10 +4,7 @@ opencv-python
 matplotlib
 Pillow
 django-crispy-forms
-uuid
+requests
 json5
 random2
-requests
-re
-shutil
 subprocess32
