@@ -1,0 +1,63 @@
+{% extends "HtmlFiles/Base.html" %}
+
+{% block title %}Analytics Data Tables{% endblock title %}
+
+{% load static %}
+{% block body %}
+
+<link href="{% static 'CssFiles/analytics_tables.css' %}" rel="stylesheet">
+<link href="{% static 'CssFiles/customer_waiting_time_for_order.css' %}" rel="stylesheet">
+
+
+
+
+
+
+<h2>General Analytics Report</h2>
+
+
+<div class="page-slider">
+    <h2>
+        <a href="{% url 'analytics_table' %}" class="slider-button {% if active_page == 'statistics' %}active{% endif %}">
+            Statistics
+        </a>
+    </h2>
+    <h2>
+        <a href="{% url 'analytics' %}" class="slider-button {% if active_page == 'Visualization' %}active{% endif %}">
+            Visualization
+        </a>
+    </h2>
+</div>
+
+
+
+<div class="dashboard-container">
+
+    
+    <div class="table-grid">
+        <div class="dashboard-card">
+            <h4>Most Ordered Dishes</h4>
+            <table class="data-table" id="dishesTable"></table>
+        </div>
+        <div class="dashboard-card">
+            <h4>Customer Count</h4>
+            <table class="data-table" id="countTable"></table>
+        </div>
+        <div class="dashboard-card">
+            <h4>Peak Hours</h4>
+            <table class="data-table" id="peakHoursTable"></table>
+        </div>
+        <div class="dashboard-card">
+            <h4>Customer Satisfaction</h4>
+            <table class="data-table" id="satisfactionTable"></table>
+        </div>
+    </div>
+</div>
+
+<!-- Pass the static URL to JavaScript -->
+<script>
+    const staticUrl = "{% static '' %}";
+</script>
+
+<script src="{% static 'JavaScriptFiles/analytics_tables.js' %}" defer></script>
+{% endblock body %}

@@ -1,0 +1,50 @@
+{% extends "HtmlFiles/Base.html" %}
+{% block title %}Categories{% endblock title %}
+
+{% load static %}
+
+{% block home_active %}active{% endblock home_active %}
+
+{% block body %}
+<link href="{% static 'CssFiles/categories.css' %}" rel="stylesheet">
+<script src="{% static 'JavaScriptFiles/categories.js' %}"></script>
+<link href="{% static 'CssFiles/variables.css' %}" rel="stylesheet">
+
+<main>
+    <section>
+        <h1 class="page-heading">Select Category</h1> 
+        {% if categories %}
+        <div class="diagonal-image-container">
+            {% for category in categories %}
+                <div class="image-item {% if loop.index == 1 %}center{% elif loop.index == 2 %}top-right{% elif loop.index == 3 %}bottom-right{% endif %}" id="image-{{ loop.index }}">
+                    {% if category.URL %}
+                        <a href="{% url category.URL %}">  <!-- Use the category.URL correctly -->
+                            <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category-image">
+                        </a>
+                    {% else %}
+                        <span>No link available</span>  <!-- Fallback if URL is None -->
+                    {% endif %}
+                    <div class="hidden-text">
+                        <h3><strong>{{ category.name }}</strong></h3>
+                        {% comment %} <p>This is some additional text for {{ category.some_text }}.</p> {% endcomment %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        {% else %}
+            <p>No categories available.</p>
+        {% endif %}
+    </section>
+</main>
+
+{% endblock %}

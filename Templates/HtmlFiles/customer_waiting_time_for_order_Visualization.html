@@ -1,0 +1,46 @@
+{% extends "HtmlFiles/Base.html" %}
+{% block title %}Customer Waiting Time for Order{% endblock title %}
+
+{% load static %}
+
+{% block home_active %}active{% endblock home_active %}
+
+{% block body %}
+<!-- Link to external CSS and JS files -->
+<link href="{% static 'CssFiles/customer_waiting_time_for_order.css' %}" rel="stylesheet">
+<link href="{% static 'CssFiles/customer_waiting_time_for_order_Visualization.css' %}" rel="stylesheet">
+<link href="{% static 'CssFiles/variables.css' %}" rel="stylesheet">
+
+
+{% comment %} -------------------Slider------------------------ {% endcomment %}
+
+<h2>Order Fulfillment Lead Time</h2>
+<div class="page-slider">
+    <h2><a href="{% url 'waiting_time_for_order' %}" class="slider-button {% if active_page == 'statistics' %}eactiv{% endif %}">Statistics</a></h2>
+    <h2><a href="{% url 'waiting_time_for_order_Visualization' %}" class="slider-button {% if active_page == 'Visualization' %}active{% endif %}">Visualization</a></h2>
+</div>
+
+
+
+
+{% comment %} ----------------------------------Graphs Container ---------------------------- {% endcomment %}
+<div class="containerr">
+    <div class="charts-container">
+    <canvas id="waitingTimeChart1"></canvas>
+    <canvas id="waitingTimeChart2"></canvas>
+</div>
+</div>
+
+
+
+
+<!-- Pass the waiting_time_data and total_waiting_time_data to a JavaScript variable -->
+<script>
+    const waitingTimeData = {{ waiting_time_data|safe }};
+    const total_waiting_time_data = {{ total_waiting_time_data|safe }};
+</script>
+
+<!-- Link to external JavaScript file -->
+<script src="{% static 'JavaScriptFiles/customer_waiting_time_for_order_Visualization.js' %}"></script>
+
+{% endblock %}

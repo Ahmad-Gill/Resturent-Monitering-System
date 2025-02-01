@@ -1,0 +1,36 @@
+{% extends "HtmlFiles/Base.html" %}
+
+{% block title %}Preprocessing_1{% endblock %}
+{% block home_active %}active{% endblock %}
+
+{% load static %}
+{% block body %}
+<link href="{% static 'CssFiles/Add_Video.css' %}" rel="stylesheet">
+<link href="{% static 'CssFiles/variables.css' %}" rel="stylesheet">
+
+<div class="container_">
+    <h1>Final Step of Preprocessing</h1>
+
+    <p>It will take a minimum of 12 hours, so be patient and <strong>do not turn off the computer</strong>.</p>
+
+    <div id="loading-message-container" style="display: none;">
+        <div id="loading-message"></div>
+    </div>
+
+    {% if grids %}
+    <div class="button-container">
+        <a href="{% url 'preprocessing_2' %}">
+            <button class="submit-btn" id="start-button" onclick="startPreprocessing()">Start Preprocessing</button>
+        </a>
+    </div>
+    
+    {% elif error %}
+        <h2>Error: {{ error }}</h2>
+    {% else %}
+        <h2>No data received.</h2>
+    {% endif %}
+</div>
+
+<script src="{% static 'JavaScriptFiles/preprocessing1.js' %}"></script>
+
+{% endblock %}
