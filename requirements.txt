@@ -1,0 +1,13 @@
+Django
+numpy
+opencv-python
+matplotlib
+Pillow
+django-crispy-forms
+uuid
+json5
+random2
+requests
+re
+shutil
+subprocess32

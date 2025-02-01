@@ -18,8 +18,8 @@ from .forms import ContactForm
 # Importing models for database interactions
 from .models import GeneratedValue, Categories, CustomerOrderWaitingTime
 
-# Importing modules for generating and handling data
-from python_code.generate_random_value import generate_random_value
+
+
 
 # Modules for image processing and visualization
 import cv2
