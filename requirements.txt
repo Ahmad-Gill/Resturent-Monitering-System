@@ -10,3 +10,4 @@ random2
 subprocess32
 livereload
 markupsafe
+daphne
