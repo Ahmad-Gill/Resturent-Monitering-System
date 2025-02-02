@@ -610,3 +610,37 @@ h1 {
     color: var(--primary-color);
     transform: translate(0, -0.25rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
 }
+
+
+.containerr table {
+    width: 100%;  /* Make the table take up 100% of the container's width */
+    border-collapse: collapse;
+}
+
+/* Table Header Styling */
+.containerr th {
+    padding: 10px;
+    text-align: left;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    color: #000;
+}
+
+/* Table Data Cell Styling */
+.containerr td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Table Row Hover Effect */
+.containerr tr:hover {
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+/* Empty State Styling */
+.containerr td[colspan="3"] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}

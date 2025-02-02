@@ -33,7 +33,12 @@ class CustomerOrderWaitingTime(models.Model):
 
     def __str__(self):
        return f"Order served from {self.start_time.strftime('%Y-%m-%d %H:%M')} to {self.end_time.strftime('%Y-%m-%d %H:%M')} on {self.date}"
+class Visitor(models.Model):
+    name = models.CharField(max_length=100)  # This can be the visitor's IP or name
+    visit_time = models.DateTimeField(auto_now_add=True)  # This automatically records the time of visit
 
+    def __str__(self):
+        return self.name
 
 class CustomerOrderServingTime(models.Model):
     table_number = models.IntegerField(null=True, blank=True) 

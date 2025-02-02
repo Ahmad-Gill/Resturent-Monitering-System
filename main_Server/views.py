@@ -7,17 +7,20 @@ from django.urls import reverse
 import base64
 import ast
 from django.db.models import ExpressionWrapper
+from django.db.models import Count
 from django.db.models import F
 from django.db.models import DurationField
+from django.utils.timezone import now
 from django.db.models import Sum
 from django.http import StreamingHttpResponse
 import time
+from django.db.models import Count, Max
 from .forms import ContactForm
+from .models import Visitor
 
 
 # Importing models for database interactions
 from .models import GeneratedValue, Categories, CustomerOrderWaitingTime
-
 
 
 
@@ -369,6 +372,21 @@ def main(request):
     success = False
     error = False
 
+    # Capture the user's IP address
+    ip_address = request.META.get('REMOTE_ADDR')
+
+    # Optionally, use the IP address as the visitor's name
+    visitor_name = f"Visitor IP Adress {ip_address}"
+    print(visitor_name)
+
+    # Store the visitor information and time in the database (only once)
+    # You can add logic to check if the IP is already recorded
+    Visitor.objects.create(name=visitor_name, visit_time=now())
+    visitors = Visitor.objects.values('name').annotate(
+        count=Count('name'),
+        latest_visit_time=Max('visit_time')
+    ).order_by('latest_visit_time')
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -403,9 +421,9 @@ def main(request):
         "time": "kahdsl",
         "url_": "/", 
         "link_text": "Home",
+         'visitors': visitors,
     }
     return render(request, 'HtmlFiles/main.html', context)
-
 # Categories Section
 def categories(request):
     if request.user.is_anonymous:
