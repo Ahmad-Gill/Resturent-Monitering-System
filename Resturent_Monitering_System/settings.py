@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-59s8w$4-ms)1!g0%_h+&x(rb8(tv*y(o%7=0g5y-9@2*1j%79e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["resturent-monitering-system.onrender.com", "0.0.0.0", "localhost"]
+ALLOWED_HOSTS = ["resturent-monitering-system.onrender.com", "0.0.0.0", "localhost","127.0.0.1"]
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+     'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
