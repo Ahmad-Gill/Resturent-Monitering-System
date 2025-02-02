@@ -10,5 +10,6 @@ random2
 subprocess32
 livereload
 whitenoise
+waitress
 markupsafe
 daphne
